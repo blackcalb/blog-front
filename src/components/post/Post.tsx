@@ -17,7 +17,11 @@ export function Post({ post }: Readonly<PostProps>) {
         <Typhography className="font-bold text-lg capitalize line-clamp-1">
           {post.title}
         </Typhography>
-        {wasCreatedByMe && <div className="text-sm italic">edit</div>}
+        {wasCreatedByMe && (
+          <a className="text-sm italic" href={`/post/${post.id}/edit`}>
+            edit
+          </a>
+        )}
       </div>
 
       <div className="p-4">{post.content}</div>

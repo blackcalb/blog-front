@@ -3,11 +3,12 @@ export interface MutationHandlers {
   onSuccess?: (data: Response) => void;
 }
 
-export interface PostWithTotalComments {
+export interface Post {
   id: string | number;
   created_at: string;
   created_by: string;
   title: string;
   content: string;
-  total_comments: number;
 }
+
+export type PostWithTotalComments = Post & { total_comments: number };

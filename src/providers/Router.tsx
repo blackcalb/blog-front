@@ -3,6 +3,7 @@ import Home from "../pages/home";
 import SignUp from "../pages/auth/sign-up";
 import SignIn from "../pages/auth/sign-in";
 import NewPost from "@/pages/NewPost";
+import { EditPost } from "@/pages/EditPost";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,18 @@ const router = createBrowserRouter([
   {
     path: "/new-post",
     element: <NewPost />,
+  },
+  {
+    path: "/post/:postId",
+    element: <div>post detail</div>,
+  },
+  {
+    path: "/post/:postId/edit",
+    element: <EditPost />,
+  },
+  {
+    path: "/post/:postId/delete-confirm",
+    element: <div>post detail</div>,
   },
 ]);
 
