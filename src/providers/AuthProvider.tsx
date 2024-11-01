@@ -25,6 +25,7 @@ export function AuthProvider({
     if (token) {
       refetch()
         .then((res) => res?.data)
+        .then((d) => d?.clone())
         .then((d) => d?.json())
         .then(updateUserInfo)
         .catch(() => {

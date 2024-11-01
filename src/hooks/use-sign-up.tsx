@@ -1,11 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
 import { SignupFormDTO } from "../schemas/auth";
 import getBackendUrl from "../helpers/get-backend-url";
+import { MutationHandlers } from "@/types";
 
-export default function useSignUp(options?: {
-  onError?: (error: Error) => void;
-  onSuccess?: (data: Response) => void;
-}) {
+export default function useSignUp(options?: MutationHandlers) {
   return useMutation({
     mutationFn: (data: SignupFormDTO) => {
       return fetch(`${getBackendUrl()}/auth/signup`, {

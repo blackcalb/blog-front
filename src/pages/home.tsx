@@ -2,6 +2,7 @@ import Typhography from "@/components/content/typhography";
 import WrapperContent from "../components/wrapper-content";
 import useAuth from "../hooks/use-auth";
 import useGetAllPosts from "../hooks/use-get-all-posts";
+import Button from "@/components/inputs/button";
 
 export default function Home() {
   const { data: posts, isLoading, error } = useGetAllPosts();
@@ -35,7 +36,7 @@ function EmptyHome() {
   const { isLogged } = useAuth();
 
   return (
-    <WrapperContent>
+    <WrapperContent className="text-center">
       <Typhography kind="h1" className="text-center mb-10">
         Post
       </Typhography>
@@ -43,9 +44,16 @@ function EmptyHome() {
         There are no posts published yet.
       </Typhography>
       {isLogged && (
-        <Typhography>
-          Click on the button below to create the firs post
-        </Typhography>
+        <>
+          <Typhography>
+            Click on the button below to create the firs post
+          </Typhography>
+          <a href="/new-post">
+            <Button type={"button"} className="mt-4">
+              Create a new post
+            </Button>
+          </a>
+        </>
       )}
       {!isLogged && (
         <>
