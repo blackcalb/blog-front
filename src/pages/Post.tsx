@@ -5,7 +5,7 @@ import useAuth from "@/hooks/use-auth";
 import useGetComments from "@/hooks/use-get-comments";
 import useGetPost from "@/hooks/use-get-post";
 import { useParams } from "react-router-dom";
-import { Comment as CommentType } from "@/types";
+import { Comment } from "@/components/component/Component";
 
 export function Post() {
   const { postId } = useParams();
@@ -97,43 +97,6 @@ function CommentList({ postId }: Readonly<CommentListProps>) {
       {comments.map((comment) => (
         <Comment key={comment.id} comment={comment} />
       ))}
-    </div>
-  );
-}
-
-interface CommentProps {
-  comment: CommentType;
-}
-function Comment({ comment }: Readonly<CommentProps>) {
-  const { user } = useAuth();
-
-  const wasCreatedByMe = user?.id === comment.created_by;
-  return (
-    <div className="p-2 rounded-md border border-black bg-teal-200 flex flex-col">
-      <Typhography className="text-xs italic text-right">
-        By: {comment.created_by}
-      </Typhography>
-      <Typhography className="py-2">{comment.content}</Typhography>
-      <div className="flex flex-row-reverse justify-between items-end">
-        <Typhography className="text-xs italic text-right">
-          on:{" "}
-          {Intl.DateTimeFormat("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-          }).format(new Date(comment.created_at))}
-        </Typhography>
-        {wasCreatedByMe && (
-          <a
-            className="text-sm italic"
-            href={`/post/${comment.post_id}/comment/${comment.id}/edit`}
-          >
-            edit
-          </a>
-        )}
-      </div>
     </div>
   );
 }
