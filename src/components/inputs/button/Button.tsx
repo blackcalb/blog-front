@@ -26,6 +26,7 @@ export const Button = ({
         "border-2 border-solid border-teal-700",
         `hover:bg-teal-600 hover:border-teal-600`,
         `active:bg-teal-400 active:border-teal-400`,
+        "disabled:cursor-not-allowed disabled:bg-teal-300 disabled:border-teal-300",
         className
       )}
     >

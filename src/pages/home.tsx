@@ -3,10 +3,11 @@ import WrapperContent from "../components/wrapper-content";
 import useAuth from "../hooks/use-auth";
 import useGetAllPosts from "../hooks/use-get-all-posts";
 import Button from "@/components/inputs/button";
+import Post from "@/components/post";
 
 export default function Home() {
   const { data: posts, isLoading, error } = useGetAllPosts();
-  const { user } = useAuth();
+  const { isLogged } = useAuth();
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -16,17 +17,33 @@ export default function Home() {
     return <div>Error: {error.message}</div>;
   }
 
-  if (posts?.length === 0) {
+  if (!posts || posts?.length === 0) {
     return <EmptyHome />;
   }
 
   return (
     <WrapperContent>
-      <div className="flex flex-col justify-center items-center bg-red-200">
-        Hello 👋
-        {!user && <p>Not logged in</p>}
-        {user && <p>Logged in as {user.email}</p>}
-        <p>{JSON.stringify(posts, undefined, Infinity)}</p>
+      <div className="flex justify-between items-end mb-10">
+        <Typhography kind="h1" className="text-center ">
+          Posts
+        </Typhography>
+        {!isLogged ? (
+          <a href="/auth/sign-in">
+            <span className="underline">Sign in</span> to create a new post
+          </a>
+        ) : (
+          <a href="/new-post">
+            <Button type={"button"} className="mt-4" disabled={!isLogged}>
+              Create a new post
+            </Button>
+          </a>
+        )}
+      </div>
+
+      <div className="flex flex-col gap-2">
+        {posts.map((post) => (
+          <Post key={post.id} post={post} />
+        ))}
       </div>
     </WrapperContent>
   );
