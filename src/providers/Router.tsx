@@ -4,6 +4,8 @@ import SignUp from "../pages/auth/sign-up";
 import SignIn from "../pages/auth/sign-in";
 import NewPost from "@/pages/NewPost";
 import { EditPost } from "@/pages/EditPost";
+import { Post } from "@/pages/Post";
+import DeletePost from "@/pages/DeletePost";
 
 const router = createBrowserRouter([
   {
@@ -18,21 +20,26 @@ const router = createBrowserRouter([
     path: "/auth/sign-in",
     element: <SignIn />,
   },
+  //TODO: protect urls
   {
     path: "/new-post",
     element: <NewPost />,
   },
   {
     path: "/post/:postId",
-    element: <div>post detail</div>,
+    element: <Post />,
   },
   {
     path: "/post/:postId/edit",
     element: <EditPost />,
   },
   {
-    path: "/post/:postId/delete-confirm",
-    element: <div>post detail</div>,
+    path: "/post/:postId/confirm-delete",
+    element: <DeletePost />,
+  },
+  {
+    path: "/post/:postId/new-comment",
+    element: <div>new comment</div>,
   },
 ]);
 

@@ -5,11 +5,12 @@ type TyphographyProps = {
   children: ReactNode;
   className?: string;
   element?: ReactElement;
-  kind?: "p" | "h1" | "span";
+  kind?: "p" | "h1" | "h2" | "span";
 };
 
 const styles = {
   "text-h1": "text-3xl font-bold",
+  "text-h2": "text-xl font-bold",
 };
 
 export function Typhography(props: Readonly<TyphographyProps>) {
@@ -19,6 +20,7 @@ export function Typhography(props: Readonly<TyphographyProps>) {
   const computedClassName = cn(
     className,
     kind === "h1" && styles["text-h1"],
+    kind === "h2" && styles["text-h2"],
     el?.props.classname
   );
 

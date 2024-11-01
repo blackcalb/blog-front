@@ -14,9 +14,11 @@ export function Post({ post }: Readonly<PostProps>) {
   return (
     <div className="bg-slate-100/65 rounded-md border border-slate-400">
       <div className="w-full border-b border-slate-300 p-4 flex justify-between items-end">
-        <Typhography className="font-bold text-lg capitalize line-clamp-1">
-          {post.title}
-        </Typhography>
+        <a href={`/post/${post.id}`}>
+          <Typhography className="font-bold text-lg capitalize line-clamp-1">
+            {post.title}
+          </Typhography>
+        </a>
         {wasCreatedByMe && (
           <a className="text-sm italic" href={`/post/${post.id}/edit`}>
             edit
