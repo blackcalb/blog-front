@@ -12,3 +12,11 @@ export interface Post {
 }
 
 export type PostWithTotalComments = Post & { total_comments: number };
+
+export interface Comment {
+  id: string | number;
+  created_at: string;
+  created_by: string;
+  content: string;
+  post_id: Post["id"];
+}

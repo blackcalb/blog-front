@@ -6,6 +6,8 @@ import NewPost from "@/pages/NewPost";
 import { EditPost } from "@/pages/EditPost";
 import { Post } from "@/pages/Post";
 import DeletePost from "@/pages/DeletePost";
+import NewComment from "@/pages/NewComment";
+import { EditComment } from "@/pages/EditComment";
 
 const router = createBrowserRouter([
   {
@@ -39,7 +41,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/post/:postId/new-comment",
-    element: <div>new comment</div>,
+    element: <NewComment />,
+  },
+  {
+    path: "/post/:postId/comment/:commentId/edit",
+    element: <EditComment />,
   },
 ]);
 

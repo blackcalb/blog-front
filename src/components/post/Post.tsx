@@ -43,9 +43,14 @@ export function Post({ post }: Readonly<PostProps>) {
             }).format(new Date(post.created_at))}
           </Typhography>
         </div>
-        <Typhography className="text-xs">
-          {post.total_comments} comments
-        </Typhography>
+        <div>
+          <Typhography className="text-xs">
+            {post.total_comments} comments
+          </Typhography>
+          <a href={`/post/${post.id}/new-comment`}>
+            <Typhography className="text-xs">add</Typhography>
+          </a>
+        </div>
       </div>
     </div>
   );
