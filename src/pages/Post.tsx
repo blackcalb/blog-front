@@ -5,7 +5,7 @@ import useAuth from "@/hooks/use-auth";
 import useGetComments from "@/hooks/use-get-comments";
 import useGetPost from "@/hooks/use-get-post";
 import { useParams } from "react-router-dom";
-import { Comment } from "@/components/component/Component";
+import { Comment } from "@/components/Comment/Comment";
 
 export function Post() {
   const { postId } = useParams();

@@ -1,12 +1,17 @@
 import Typhography from "@/components/content/typhography";
 import WrapperContent from "../components/wrapper-content";
 import useAuth from "../hooks/use-auth";
-import useGetAllPosts from "../hooks/use-get-all-posts";
+import useGetPaginatePosts, {
+  PAGE_SIZE,
+} from "../hooks/use-get-paginate-posts";
 import Button from "@/components/inputs/button";
 import Post from "@/components/post";
+import { useState } from "react";
+import { PaginationNav } from "@/components/content/pagination-nav/PaginationNav";
 
 export default function Home() {
-  const { data: posts, isLoading, error } = useGetAllPosts();
+  const [page, setPage] = useState(1);
+  const { data: posts, isLoading, error } = useGetPaginatePosts(page);
   const { isLogged } = useAuth();
 
   if (isLoading) {
@@ -17,7 +22,7 @@ export default function Home() {
     return <div>Error: {error.message}</div>;
   }
 
-  if (!posts || posts?.length === 0) {
+  if (!posts) {
     return <EmptyHome />;
   }
 
@@ -41,10 +46,16 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col gap-2">
-        {posts.map((post) => (
+        {posts.content.map((post) => (
           <Post key={post.id} post={post} />
         ))}
       </div>
+      <PaginationNav
+        className="mt-4"
+        currentPage={page}
+        totalPages={Math.ceil(posts.total / PAGE_SIZE)}
+        onChange={(newPage: number) => setPage(newPage)}
+      />
     </WrapperContent>
   );
 }

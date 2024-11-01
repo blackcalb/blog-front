@@ -4,7 +4,7 @@ import WrapperContent from "@/components/wrapper-content";
 import useAuth from "@/hooks/use-auth";
 import useDeleteComment from "@/hooks/use-delete-comment";
 import useGetComment from "@/hooks/use-get-comment";
-import { Comment } from "@/components/component/Component";
+import { Comment } from "@/components/Comment/Comment";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 

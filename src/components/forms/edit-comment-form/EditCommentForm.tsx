@@ -19,7 +19,6 @@ export function EditCommentForm({
   postId,
   comment,
 }: Readonly<EditCommentFormProps>) {
-  console.log("🚀 ~ comment:", comment);
   const navigate = useNavigate();
   const [updatingError, setUpdatingError] = useState<boolean>();
 

@@ -20,3 +20,10 @@ export interface Comment {
   content: string;
   post_id: Post["id"];
 }
+
+export interface PaginateResponse<T> {
+  offset: number;
+  limits: number;
+  total: number;
+  content: T[];
+}

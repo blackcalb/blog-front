@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "../pages/home";
+import Home from "../pages/Posts";
 import SignUp from "../pages/auth/sign-up";
 import SignIn from "../pages/auth/sign-in";
 import NewPost from "@/pages/NewPost";
